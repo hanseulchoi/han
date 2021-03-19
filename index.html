@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<style>
+    h1{text-align: center;}
+    table{border:2px solid #000;border-collapse: collapse;text-align: center;width: 500px;margin: 0 auto;}
+    .tr1{background: rgb(168, 118, 164);}
+    td{border:1px solid #000;}
+</style>
+<body>
+    <div id="app">
+        <h1>대우학교 1반 성적표</h1>
+        <table>
+            <tr class="tr1">
+                <td>출석번호</td>
+                <td>이름</td>
+                <td>성별</td>
+                <td>국어</td>
+                <td>국사</td>
+                <td>수학</td>
+                <td>영어</td>
+                <td>화학</td>
+            </tr>
+            <tr v-for="(job,index) in jobs" :key="index">
+                <td>{{index+1}}</td>
+                <td>{{job.name}}</td>
+                <td>{{job.sex}}</td>
+                <td>{{job.num1}}</td>
+                <td>{{job.num2}}</td>
+                <td>{{job.num3}}</td>
+                <td>{{job.num4}}</td>
+                <td>{{job.num5}}</td>
+            </tr>
+        </table>
+        <button @click="pushData()">추가</button>
+        <button @click="popData()">삭제</button>
+    </div>
+
+
+
+    <script>
+
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                jobs:[
+                    {name:'이인포',sex:'남자',num1:'98',num2:'85',num3:'100',num4:'75',num5:'70'},
+                    {name:'손포아',sex:'남자',num1:'100',num2:'98',num3:'60',num4:'55',num5:'50'},
+                    {name:'김모포',sex:'남자',num1:'100',num2:'91',num3:'95',num4:'54',num5:'55'},
+                    {name:'김아아',sex:'여자',num1:'95',num2:'94',num3:'94',num4:'89',num5:'56'},
+                    {name:'인포모',sex:'여자',num1:'99',num2:'88',num3:'93',num4:'97',num5:'54'},
+                    {name:'인포아',sex:'남자',num1:'96',num2:'84',num3:'95',num4:'95',num5:'53'},
+                    {name:'모아인',sex:'여자',num1:'99',num2:'90',num3:'98',num4:'70',num5:'52'},
+                    {name:'정포모',sex:'여자',num1:'99',num2:'93',num3:'97',num4:'88',num5:'78'},
+                    {name:'이포모',sex:'남자',num1:'83',num2:'85',num3:'82',num4:'85',num5:'84'},
+                ]
+            },
+            methods:{
+                pushData(){
+                    this.jobs.push({name:'이인포',sex:'남자',num1:'98',num2:'85',num3:'100',num4:'75',num5:'70'});
+                },
+                popData(){
+                    this.jobs.pop()
+                }
+            }
+        })
+
+
+    </script>
+
+</body>
+</html>
